@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dr. Joel Marcos Pereira — Agende sua consulta</title>
+<meta name="description" content="Dr. Joel Marcos Pereira, médico alergista e imunologista. Selecione a cidade onde deseja realizar sua consulta." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --deep:      #2F4354; /* azul profundo acinzentado — textos */
+    --deep-soft: #5A6B7A; /* subtom para textos secundários */
+    --white:     #FFFFFF;
+    --turq:      #29CEB5; /* turquesa — ícones e destaques */
+    --turq-deep: #158C79; /* turquesa escurecido p/ contraste em texto */
+    --ice:       #F2FCFE; /* azul muito claro */
+    --line:      rgba(47, 67, 84, 0.10);
+    --radius:    20px;
+    --gutter:    22px;
+    --maxw:      1160px;
+    /* Mobile: até onde a imagem aparece antes da lâmina de vidro começar.
+       Ajuste este valor para subir/descer o corte reto. */
+    --sheet-top: 116vw; /* em vw para acompanhar a foto: 116vw ≈ logo abaixo das mãos */
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--white);
+    color: var(--deep);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --display: 'Bricolage Grotesque', 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  body { position: relative; min-height: 100vh; }
+
+  /* Iluminação difusa (glow) atrás da região dos cards / retrato */
+  .glow {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(520px 360px at 82% 20%, rgba(41, 206, 181, 0.20), transparent 70%),
+      radial-gradient(560px 440px at 8% 58%, rgba(102, 190, 255, 0.18), transparent 72%),
+      radial-gradient(620px 420px at 92% 78%, rgba(41, 206, 181, 0.14), transparent 72%),
+      radial-gradient(700px 500px at 50% 102%, rgba(120, 150, 255, 0.10), transparent 70%);
+  }
+
+  .page {
+    position: relative;
+    z-index: 1;
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 var(--gutter) 40px;
+  }
+
+  /* ---------- RETRATO ---------- */
+  .portrait {
+    position: relative;
+    width: 100%;
+    margin: 0 calc(-1 * var(--gutter)) 4px;
+    width: calc(100% + 2 * var(--gutter));
+  }
+  .portrait__frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    max-height: 380px;
+    overflow: hidden;
+    background:
+      linear-gradient(180deg, var(--ice) 0%, #ffffff 100%);
+  }
+  .portrait__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 22%;
+    display: block;
+  }
+  /* Placeholder discreto enquanto a foto real não é fornecida.
+     Basta colocar o arquivo "foto-dr-joel.jpg" nesta pasta. */
+  .portrait__placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--deep-soft);
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    background:
+      linear-gradient(180deg, #EAF7F5 0%, #F6FBFC 100%);
+  }
+  /* Degradê que integra a base do retrato ao fundo branco */
+  .portrait__fade {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 42%;
+    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, #ffffff 92%);
+    pointer-events: none;
+  }
+
+  /* ---------- CONTEÚDO ---------- */
+  .intro { padding-top: 44px; text-align: left; }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 18px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--turq-deep);
+  }
+  .eyebrow::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--turq);
+    box-shadow: 0 0 0 4px rgba(41, 206, 181, 0.16);
+    animation: eyebrow-pulse 2.4s ease-out infinite;
+  }
+  /* Halo que se expande e some, num ritmo calmo (2,4 s por ciclo) */
+  @keyframes eyebrow-pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(41, 206, 181, 0.45); }
+    70%  { box-shadow: 0 0 0 8px rgba(41, 206, 181, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(41, 206, 181, 0); }
+  }
+  .intro h1 {
+    margin: 0 0 24px;
+    font-family: var(--display);
+    font-size: 30px;
+    line-height: 1.28;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--deep);
+    max-width: 20ch;
+  }
+  .intro h1 .accent { color: var(--turq-deep); }
+  .intro p {
+    margin: 0 0 16px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--deep-soft);
+    max-width: 46ch;
+  }
+  .intro .guide {
+    margin: 0;
+    font-weight: 600;
+    color: var(--deep);
+  }
+
+  /* ---------- CARDS ---------- */
+  .cards {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .card {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-height: 86px;
+    padding: 14px 20px;
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: var(--deep);
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.58) 0%, rgba(255,255,255,0.30) 100%);
+    -webkit-backdrop-filter: blur(18px) saturate(165%);
+    backdrop-filter: blur(18px) saturate(165%);
+    border: 1px solid rgba(255,255,255,0.55);
+    box-shadow:
+      0 12px 30px -14px rgba(47, 67, 84, 0.30),          /* sombra difusa */
+      0 2px 6px -3px rgba(47, 67, 84, 0.12),
+      inset 0 1px 0 rgba(255,255,255,0.95),              /* fio de luz no topo */
+      inset 0 -20px 34px -26px rgba(47, 67, 84, 0.16);   /* profundidade na base */
+    overflow: hidden;
+    transition: border-color .24s ease, box-shadow .24s ease, transform .24s ease;
+  }
+  /* Brilho especular no topo (aspecto de vidro) */
+  .card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.60) 0%, rgba(255,255,255,0.06) 40%, rgba(255,255,255,0) 60%);
+    pointer-events: none;
+    z-index: -1;
+  }
+  /* Refração de borda muito sutil, revelada no hover/foco */
+  .card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(120deg,
+      rgba(41,206,181,0.0) 20%,
+      rgba(41,206,181,0.45) 45%,
+      rgba(120,180,255,0.45) 60%,
+      rgba(41,206,181,0.0) 82%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+            mask-composite: exclude;
+    opacity: 0;
+    transition: opacity .24s ease;
+    pointer-events: none;
+    z-index: -1;
+  }
+  /* Hover / toque / foco: tom turquesa-gelo + glow */
+  .card:hover,
+  .card:active,
+  .card:focus-visible {
+    background: linear-gradient(180deg, rgba(228,248,245,0.78) 0%, rgba(205,240,234,0.52) 100%);
+    border-color: rgba(255,255,255,0.75);
+    box-shadow:
+      0 20px 40px -16px rgba(47, 67, 84, 0.34),
+      0 3px 8px -3px rgba(47, 67, 84, 0.14),
+      inset 0 1px 0 rgba(255,255,255,1),
+      inset 0 -22px 36px -26px rgba(47, 67, 84, 0.18),
+      0 0 24px 3px rgba(41, 206, 181, 0.30);
+  }
+  .card:hover { transform: translateY(-2px); }
+  .card:hover::after,
+  .card:focus-visible::after { opacity: 1; }
+  .card:active { transform: translateY(0); }
+  .card:focus-visible {
+    outline: 2px solid var(--turq);
+    outline-offset: 3px;
+  }
+
+  .card__icon {
+    flex: 0 0 auto;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: var(--turq-deep);
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.85), rgba(41,206,181,0.10));
+    box-shadow:
+      inset 0 1px 1px rgba(255,255,255,0.95),
+      inset 0 -2px 4px rgba(41,206,181,0.14),
+      0 4px 10px -4px rgba(47,67,84,0.20);
+    animation: icon-pulse 2.4s ease-out infinite;
+  }
+  /* Mesmo pulso do bullet do "Olá": anel nítido (sem blur) que se expande e some */
+  @keyframes icon-pulse {
+    0% {
+      box-shadow:
+        inset 0 1px 1px rgba(255,255,255,0.95),
+        inset 0 -2px 4px rgba(41,206,181,0.14),
+        0 4px 10px -4px rgba(47,67,84,0.20),
+        0 0 0 0 rgba(41,206,181,0.45);
+    }
+    70% {
+      box-shadow:
+        inset 0 1px 1px rgba(255,255,255,0.95),
+        inset 0 -2px 4px rgba(41,206,181,0.14),
+        0 4px 10px -4px rgba(47,67,84,0.20),
+        0 0 0 8px rgba(41,206,181,0);
+    }
+    100% {
+      box-shadow:
+        inset 0 1px 1px rgba(255,255,255,0.95),
+        inset 0 -2px 4px rgba(41,206,181,0.14),
+        0 4px 10px -4px rgba(47,67,84,0.20),
+        0 0 0 0 rgba(41,206,181,0);
+    }
+  }
+  .card__icon svg { width: 22px; height: 22px; display: block; }
+
+  .card__text { flex: 1 1 auto; min-width: 0; }
+  .card__city {
+    display: block;
+    font-family: var(--display);
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--deep);
+    overflow-wrap: break-word;
+  }
+  .card__sub {
+    display: block;
+    margin-top: 3px;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--deep-soft);
+  }
+
+  .card__arrow {
+    flex: 0 0 auto;
+    color: var(--deep-soft);
+    display: grid;
+    place-items: center;
+    transition: transform .22s ease, color .22s ease;
+  }
+  .card__arrow svg { width: 20px; height: 20px; display: block; }
+  .card:hover .card__arrow { color: var(--turq-deep); transform: translateX(3px); }
+
+  /* ---------- RODAPÉ ---------- */
+  .footer {
+    margin-top: 36px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--deep-soft);
+    line-height: 1.5;
+  }
+
+  /* ---------- TABLET (768–1023) ---------- */
+  @media (min-width: 768px) {
+    .page { padding-bottom: 56px; }
+    .stack {
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .portrait__frame { max-height: 440px; aspect-ratio: 16 / 10; }
+    .intro h1 { font-size: 32px; }
+  }
+
+  /* ---------- DESKTOP (≥1024) ---------- */
+  .bg-desktop { display: none; }
+
+  @media (min-width: 1024px) {
+    /* Fundo full-bleed com o médico já posicionado à direita na imagem */
+    .glow { display: none; }
+    /* Rola junto com a página (não fixa): cobre o documento inteiro, não só a janela */
+    .bg-desktop {
+      display: block;
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      /* 68% no eixo X: em telas mais estreitas o corte preserva o médico à direita.
+         22% no eixo Y: em telas mais baixas que 16:9 a maior parte do corte vai para a
+         base (mesa), mantendo um respiro confortável acima da cabeça. */
+      background: #f4f9fa url('fundo_desktop_3.webp') 68% 22% / cover no-repeat;
+    }
+
+    .page {
+      padding: 64px 48px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 500px) 1fr;
+      align-items: center;
+      gap: 48px;
+    }
+    .stack { max-width: none; margin: 0; }
+    /* Retrato de coluna some no desktop — o médico está no background */
+    .col-portrait { display: none; }
+
+    .intro h1 { font-size: 40px; line-height: 1.22; }
+    .intro h1 .nb { white-space: nowrap; }
+    .intro p { font-size: 17px; }
+
+    .cards { max-width: 470px; }
+
+    /* Vidro mais transparente no desktop: deixa o fundo (quadrados e luz) aparecer */
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.34) 0%, rgba(255,255,255,0.14) 100%);
+      -webkit-backdrop-filter: blur(10px) saturate(160%);
+      backdrop-filter: blur(10px) saturate(160%);
+      border-color: rgba(255,255,255,0.65);
+    }
+    .card::before {
+      background: linear-gradient(180deg, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.04) 40%, rgba(255,255,255,0) 60%);
+    }
+    /* Hover / toque / foco no desktop: tom turquesa-gelo, mantendo a transparência do vidro */
+    .card:hover,
+    .card:active,
+    .card:focus-visible {
+      background: linear-gradient(180deg, rgba(214,245,239,0.62) 0%, rgba(190,236,228,0.38) 100%);
+    }
+    .footer { margin-top: 48px; text-align: left; }
+  }
+
+  @media (min-width: 1440px) {
+    .layout { gap: 64px; }
+  }
+
+  /* ---------- MOVIMENTO REDUZIDO ---------- */
+  @media (prefers-reduced-motion: reduce) {
+    .card, .card__arrow { transition: none; }
+    .card:hover { transform: none; }
+    .card:hover .card__arrow { transform: none; }
+    .eyebrow::before { animation: none; }
+    .card__icon { animation: none; }
+  }
+
+  /* ---------- SEM SUPORTE A BACKDROP-FILTER ---------- */
+  @supports not ((backdrop-filter: blur(6px)) or (-webkit-backdrop-filter: blur(6px))) {
+    .card { background: linear-gradient(180deg, #ffffff, #f6fbfc); }
+  }
+
+  /* ---------- MOBILE E TABLET: imagem de fundo + lâmina de vidro fosco (≤1023px) ---------- */
+  .bg-mobile { display: none; }
+
+  @media (max-width: 1023px) {
+    /* Imagem vertical do médico como fundo full-bleed */
+    .glow { display: none; }
+    /* Rola junto com a página (não fixa). Altura segue a proporção da imagem (1170×2532). */
+    .bg-mobile {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: calc(100vw * 2532 / 1170);
+      z-index: 0;
+      background: #f4f9fa url('fundo_mobile.webp') center top / 100% auto no-repeat;
+    }
+    /* O retrato de coluna some — o médico agora está no fundo */
+    .col-portrait { display: none; }
+
+    /* Página sem respiro lateral: a lâmina é full-bleed */
+    .page { padding: 0; }
+
+    /* Lâmina de vidro fosco por cima da imagem, com corte reto no topo.
+       A altura do corte é controlada por --sheet-top. */
+    .stack {
+      position: relative;
+      margin-top: var(--sheet-top);
+      min-height: calc(100dvh - var(--sheet-top));
+      padding: 34px var(--gutter) 40px;
+      background: rgba(255, 255, 255, 0.42);
+      -webkit-backdrop-filter: blur(26px) saturate(150%);
+      backdrop-filter: blur(26px) saturate(150%);
+      border-top: 1px solid rgba(255, 255, 255, 0.75);
+      box-shadow: 0 -14px 34px -20px rgba(47, 67, 84, 0.28);
+    }
+    /* Sem padding-top extra dentro da lâmina (a própria lâmina já dá o respiro) */
+    .intro { padding-top: 0; }
+    /* Mais respiro entre os botões no mobile e tablet */
+    .cards { gap: 25px; }
+
+    /* Fallback sem suporte a blur: lâmina branca quase sólida */
+    @supports not ((backdrop-filter: blur(6px)) or (-webkit-backdrop-filter: blur(6px))) {
+      .stack { background: rgba(255, 255, 255, 0.94); }
+    }
+  }
+
+  /* ---------- TABLET (768–1023px): imagem própria 3:4, lâmina full-bleed, conteúdo centralizado ---------- */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    :root { --sheet-top: 88vw; } /* 88vw ≈ logo abaixo das mãos na imagem do tablet */
+    .bg-mobile {
+      height: calc(100vw * 2048 / 1536);
+      background-image: url('fundo_tablet.webp');
+    }
+    /* A lâmina ocupa a largura toda; só o conteúdo fica limitado a 560px */
+    .stack {
+      max-width: none;
+      margin-left: 0;
+      margin-right: 0;
+      padding-left: max(var(--gutter), calc((100% - 560px) / 2));
+      padding-right: max(var(--gutter), calc((100% - 560px) / 2));
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="glow" aria-hidden="true"></div>
+  <!-- Fundo full-bleed do desktop: coloque a imagem editada (com o médico à direita)
+       como "fundo_desktop.webp" nesta pasta. Só aparece a partir de 1024px. -->
+  <div class="bg-desktop" aria-hidden="true"></div>
+  <!-- Fundo full-bleed do mobile e do tablet (imagem vertical do médico). Só aparece até 1023px.
+       Mobile usa "fundo_mobile.webp"; tablet (768–1023px) usa "fundo_tablet.webp". -->
+  <div class="bg-mobile" aria-hidden="true"></div>
+
+  <main class="page">
+    <div class="layout">
+
+      <!-- COLUNA RETRATO -->
+      <div class="col-portrait">
+        <figure class="portrait">
+          <div class="portrait__frame">
+            <!-- Coloque a foto real como "foto-dr-joel.jpg" nesta pasta.
+                 Enquanto não houver foto, o placeholder abaixo é exibido. -->
+            <img
+              class="portrait__img"
+              src="foto-dr-joel.jpg"
+              alt="Dr. Joel Marcos Pereira, médico alergista e imunologista"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              loading="eager"
+              decoding="async"
+            />
+            <div class="portrait__placeholder" style="display:none;">
+              Espaço reservado para a foto do Dr. Joel
+            </div>
+            <div class="portrait__fade" aria-hidden="true"></div>
+          </div>
+        </figure>
+      </div>
+
+      <!-- COLUNA CONTEÚDO -->
+      <div class="stack">
+        <section class="intro">
+          <span class="eyebrow">Olá, seja bem-vindo(a).</span>
+          <h1>Sou o Dr. Joel Marcos Pereira, médico <span class="accent">alergista <span class="nb">e imunologista</span></span>.</h1>
+          <p class="guide">Selecione abaixo a cidade onde deseja realizar sua consulta.</p>
+        </section>
+
+        <nav class="cards" aria-label="Cidades para agendamento">
+
+          <a class="card" href="https://molecularallergy.com.br/alergista-tangara-da-serra/">
+            <span class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+            <span class="card__text">
+              <span class="card__city">Tangará da Serra</span>
+              <span class="card__sub">Agende sua consulta</span>
+            </span>
+            <span class="card__arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+            </span>
+          </a>
+
+          <a class="card" href="https://molecularallergy.com.br/alergista-cuiaba/">
+            <span class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+            <span class="card__text">
+              <span class="card__city">Cuiabá</span>
+              <span class="card__sub">Agende sua consulta</span>
+            </span>
+            <span class="card__arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+            </span>
+          </a>
+
+          <a class="card" href="https://molecularallergy.com.br/alergista-florianopolis/">
+            <span class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+            <span class="card__text">
+              <span class="card__city">Florianópolis</span>
+              <span class="card__sub">Agende sua consulta</span>
+            </span>
+            <span class="card__arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+            </span>
+          </a>
+
+          <a class="card" href="https://molecularallergy.com.br/alergista-balneario-camboriu/">
+            <span class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+            <span class="card__text">
+              <span class="card__city">Balneário Camboriú</span>
+              <span class="card__sub">Agende sua consulta</span>
+            </span>
+            <span class="card__arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+            </span>
+          </a>
+
+        </nav>
+
+        <footer class="footer">
+          © 2026 Molecular Allergy | Todos os direitos reservados.
+        </footer>
+      </div>
+
+    </div>
+  </main>
+</body>
+</html>
