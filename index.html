@@ -22,7 +22,7 @@
     --maxw:      1160px;
     /* Mobile: até onde a imagem aparece antes da lâmina de vidro começar.
        Ajuste este valor para subir/descer o corte reto. */
-    --sheet-top: 116vw; /* em vw para acompanhar a foto: 116vw ≈ logo abaixo das mãos */
+    --sheet-top: 113vw; /* em vw para acompanhar a foto: 113vw ≈ borda da mesa, logo abaixo do tronco */
   }
 
   * { box-sizing: border-box; }
@@ -352,7 +352,7 @@
       /* 68% no eixo X: em telas mais estreitas o corte preserva o médico à direita.
          22% no eixo Y: em telas mais baixas que 16:9 a maior parte do corte vai para a
          base (mesa), mantendo um respiro confortável acima da cabeça. */
-      background: #f4f9fa url('https://molecularallergy.com.br/wp-content/uploads/2026/09/fundo_desktop_3.webp') 68% 22% / cover no-repeat;
+      background: #f4f9fa url('fundo_desktop_3.webp') 68% 22% / cover no-repeat;
     }
 
     .jm-page {
@@ -430,7 +430,7 @@
       width: 100%;
       height: calc(100vw * 2532 / 1170);
       z-index: 0;
-      background: #f4f9fa url('https://molecularallergy.com.br/wp-content/uploads/2026/09/fundo_mobile.webp') center top / 100% auto no-repeat;
+      background: #f4f9fa url('fundo_mobile.webp') center top / 100% auto no-repeat;
     }
     /* O retrato de coluna some — o médico agora está no fundo */
     .jm-col-portrait { display: none; }
@@ -469,10 +469,10 @@
 
   /* ---------- TABLET (768–1023px): imagem própria 3:4, lâmina full-bleed, conteúdo centralizado ---------- */
   @media (min-width: 768px) and (max-width: 1023px) {
-    :root { --sheet-top: 88vw; } /* 88vw ≈ logo abaixo das mãos na imagem do tablet */
+    :root { --sheet-top: 83vw; } /* 83vw ≈ borda da mesa na imagem do tablet */
     .jm-bg-mobile {
       height: calc(100vw * 2048 / 1536);
-      background-image: url('https://molecularallergy.com.br/wp-content/uploads/2026/09/fundo_tablet.webp');
+      background-image: url('fundo_tablet.webp');
     }
     /* A lâmina ocupa a largura toda; só o conteúdo fica limitado a 560px */
     .jm-stack {
@@ -488,12 +488,12 @@
 <body>
   <div class="jm-glow" aria-hidden="true"></div>
   <!-- Fundo full-bleed do desktop (médico à direita). Só aparece a partir de 1024px.
-       Imagem hospedada no WordPress: /wp-content/uploads/2026/09/fundo_desktop_3.webp -->
+       Imagem: fundo_desktop_3.webp (mesma pasta) -->
 
   <div class="jm-bg-desktop" aria-hidden="true"></div>
   <!-- Fundo full-bleed do mobile e do tablet (imagem vertical do médico). Só aparece até 1023px.
        Mobile usa "fundo_mobile.webp"; tablet (768–1023px) usa "fundo_tablet.webp",
-       ambas hospedadas no WordPress em /wp-content/uploads/2026/09/. -->
+       ambas na mesma pasta deste HTML. -->
   <div class="jm-bg-mobile" aria-hidden="true"></div>
 
   <main class="jm-page">
