@@ -22,7 +22,7 @@
     --maxw:      1160px;
     /* Mobile: até onde a imagem aparece antes da lâmina de vidro começar.
        Ajuste este valor para subir/descer o corte reto. */
-    --sheet-top: 113vw; /* em vw para acompanhar a foto: 113vw ≈ borda da mesa, logo abaixo do tronco */
+    --sheet-top: 153vw; /* em vw para acompanhar a foto: 153vw ≈ logo abaixo das mãos */
   }
 
   * { box-sizing: border-box; }
@@ -469,7 +469,7 @@
 
   /* ---------- TABLET (768–1023px): imagem própria 3:4, lâmina full-bleed, conteúdo centralizado ---------- */
   @media (min-width: 768px) and (max-width: 1023px) {
-    :root { --sheet-top: 83vw; } /* 83vw ≈ borda da mesa na imagem do tablet */
+    :root { --sheet-top: 117vw; } /* 117vw ≈ logo abaixo das mãos na imagem do tablet */
     .jm-bg-mobile {
       height: calc(100vw * 2048 / 1536);
       background-image: url('fundo_tablet.webp');
