@@ -1,0 +1,1581 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dr. Joel Marcos – Alergista em Cuiabá – Molecular Allergy</title>
+<meta name="description" content="Sou Dr. Joel Marcos, Alergista e Imunologista em Cuiabá - MT! Avaliação, diagnóstico e tratamento humanizado." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --deep:      #2F4354; /* azul profundo acinzentado — textos */
+    --deep-soft: #5A6B7A; /* subtom para textos secundários */
+    --white:     #FFFFFF;
+    --turq:      #29CEB5; /* turquesa — ícones e destaques (nunca texto sobre branco) */
+    --turq-deep: #158C79; /* turquesa escurecido — texto em destaque */
+    --ice:       #F2FCFE; /* azul muito claro — seções alternadas */
+    --radius:    20px;
+    --gutter:    22px;
+    --maxw:      1160px;
+    /* Mobile: onde a lâmina de vidro começa (logo abaixo das mãos do médico) */
+    --sheet-top: 109vw; /* logo acima das mãos na foto do mobile */
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: var(--white);
+    color: var(--deep);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  .jm-lp {
+    --display: 'Bricolage Grotesque', 'Inter', system-ui, sans-serif;
+    position: relative;
+    width: 100%;
+    overflow-x: hidden;
+  }
+  .jm-lp ul { list-style: none; margin: 0; padding: 0; }
+
+  /* ================= KICKER / EYEBROW ================= */
+  .jm-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 18px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--turq-deep);
+  }
+  .jm-eyebrow::before {
+    content: "";
+    flex: 0 0 auto;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--turq);
+    box-shadow: 0 0 0 4px rgba(41, 206, 181, 0.16);
+    animation: jm-dot-pulse 2.4s ease-out infinite;
+  }
+  /* Anel nítido (sem blur) que se expande até 8px e some — 2,4s, ease-out */
+  @keyframes jm-dot-pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(41, 206, 181, 0.45); }
+    70%  { box-shadow: 0 0 0 8px rgba(41, 206, 181, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(41, 206, 181, 0); }
+  }
+
+  .jm-accent { color: var(--turq-deep); }
+  .jm-nw { white-space: nowrap; } /* evita palavras soltas no fim do título */
+
+  /* ================= HERO ================= */
+  .jm-hero {
+    position: relative;
+    overflow: hidden;
+    background: #F4F9FA;
+  }
+  .jm-hero__bg-d,
+  .jm-hero__bg-m { display: none; }
+
+  .jm-hero__inner {
+    position: relative;
+    z-index: 1;
+    max-width: var(--maxw);
+    margin: 0 auto;
+  }
+  /* Logotipo acima do H1 na primeira dobra */
+  .jm-logo {
+    display: block;
+    width: 170px;
+    height: auto;
+    margin: 0 0 26px;
+  }
+  .jm-hero h1 {
+    margin: 0 0 24px;
+    font-family: var(--display);
+    font-size: 30px;
+    line-height: 1.28;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--deep);
+    max-width: 20ch;
+  }
+  .jm-guide {
+    margin: 0 0 16px;
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 600;
+    color: var(--deep);
+    max-width: 46ch;
+  }
+  .jm-lp .jm-facts { margin-top: 16px; display: grid; gap: 10px; max-width: 46ch; }
+  .jm-facts li {
+    position: relative;
+    padding-left: 20px;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--deep-soft);
+  }
+  .jm-facts li::before {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: 0.62em;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--turq);
+    box-shadow: 0 0 0 4px rgba(41, 206, 181, 0.16);
+  }
+  /* Botão do hero 50px mais estreito que a largura padrão dos cards */
+  .jm-hero .jm-actions { margin-top: 30px; }
+  .jm-lp .jm-actions--cta { max-width: min(420px, calc(100% - 50px)); }
+
+  /* ================= CARDS DE AÇÃO (vidro) ================= */
+  .jm-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    max-width: 470px;
+  }
+  .jm-action {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-height: 86px;
+    padding: 14px 20px;
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: var(--deep);
+    background: linear-gradient(180deg, rgba(255,255,255,0.58) 0%, rgba(255,255,255,0.30) 100%);
+    -webkit-backdrop-filter: blur(18px) saturate(165%);
+    backdrop-filter: blur(18px) saturate(165%);
+    border: 1px solid rgba(21, 140, 121, 0.24);
+    box-shadow:
+      0 12px 30px -14px rgba(47, 67, 84, 0.30),
+      0 2px 6px -3px rgba(47, 67, 84, 0.12),
+      inset 0 1px 0 rgba(255,255,255,0.95),
+      inset 0 -20px 34px -26px rgba(47, 67, 84, 0.16);
+    overflow: hidden;
+    transition: border-color .24s ease, box-shadow .24s ease, transform .24s ease, background .24s ease;
+  }
+  /* Brilho especular no topo */
+  .jm-action::before,
+  .jm-info::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(180deg, rgba(255,255,255,0.60) 0%, rgba(255,255,255,0.06) 40%, rgba(255,255,255,0) 60%);
+    pointer-events: none;
+    z-index: -1;
+  }
+  /* Refração de borda sutil — só no hover/foco */
+  .jm-action::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(120deg,
+      rgba(41,206,181,0) 20%,
+      rgba(41,206,181,0.45) 45%,
+      rgba(120,180,255,0.45) 60%,
+      rgba(41,206,181,0) 82%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+            mask-composite: exclude;
+    opacity: 0;
+    transition: opacity .24s ease;
+    pointer-events: none;
+    z-index: -1;
+  }
+  .jm-action:hover,
+  .jm-action:active,
+  .jm-action:focus-visible {
+    background: linear-gradient(180deg, rgba(228,248,245,0.78) 0%, rgba(205,240,234,0.52) 100%);
+    border-color: rgba(21, 140, 121, 0.42);
+    box-shadow:
+      0 20px 40px -16px rgba(47, 67, 84, 0.34),
+      0 3px 8px -3px rgba(47, 67, 84, 0.14),
+      inset 0 1px 0 rgba(255,255,255,1),
+      inset 0 -22px 36px -26px rgba(47, 67, 84, 0.18),
+      0 0 24px 3px rgba(41, 206, 181, 0.30);
+  }
+  .jm-action:hover { transform: translateY(-2px); }
+  .jm-action:hover::after,
+  .jm-action:focus-visible::after { opacity: 1; }
+  .jm-action:active { transform: translateY(0); }
+  .jm-action:focus-visible { outline: 2px solid var(--turq); outline-offset: 3px; }
+
+  /* Círculo de ícone (vidro próprio) */
+  .jm-ico {
+    flex: 0 0 auto;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: var(--turq-deep);
+    background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(41,206,181,0.10));
+    box-shadow:
+      inset 0 1px 1px rgba(255,255,255,0.95),
+      inset 0 -2px 4px rgba(41,206,181,0.14),
+      0 4px 10px -4px rgba(47,67,84,0.20);
+  }
+  .jm-ico svg { width: 22px; height: 22px; display: block; }
+  /* Só o ícone dos cards de ação pulsa (mesmo pulso do kicker) */
+  .jm-action .jm-ico { animation: jm-ico-pulse 2.4s ease-out infinite; }
+  @keyframes jm-ico-pulse {
+    0% {
+      box-shadow: inset 0 1px 1px rgba(255,255,255,0.95), inset 0 -2px 4px rgba(41,206,181,0.14),
+                  0 4px 10px -4px rgba(47,67,84,0.20), 0 0 0 0 rgba(41,206,181,0.45);
+    }
+    70% {
+      box-shadow: inset 0 1px 1px rgba(255,255,255,0.95), inset 0 -2px 4px rgba(41,206,181,0.14),
+                  0 4px 10px -4px rgba(47,67,84,0.20), 0 0 0 8px rgba(41,206,181,0);
+    }
+    100% {
+      box-shadow: inset 0 1px 1px rgba(255,255,255,0.95), inset 0 -2px 4px rgba(41,206,181,0.14),
+                  0 4px 10px -4px rgba(47,67,84,0.20), 0 0 0 0 rgba(41,206,181,0);
+    }
+  }
+
+  .jm-action__text { flex: 1 1 auto; min-width: 0; }
+  .jm-action__title {
+    display: block;
+    font-family: var(--display);
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--deep);
+    overflow-wrap: break-word;
+  }
+  .jm-action__sub {
+    display: block;
+    margin-top: 3px;
+    font-size: 14px;
+    line-height: 1.45;
+    color: var(--deep-soft);
+  }
+  .jm-arrow {
+    flex: 0 0 auto;
+    color: var(--deep-soft);
+    display: grid;
+    place-items: center;
+    transition: transform .22s ease, color .22s ease;
+  }
+  .jm-arrow svg { width: 20px; height: 20px; display: block; }
+  .jm-action:hover .jm-arrow,
+  .jm-action:focus-visible .jm-arrow { color: var(--turq-deep); transform: translateX(3px); }
+
+  /* ================= SEÇÕES ================= */
+  .jm-sec {
+    position: relative;
+    overflow: hidden;
+    padding: 72px var(--gutter);
+    background: var(--white);
+  }
+  .jm-sec--ice { background: var(--ice); }
+  /* Iluminação difusa atrás das áreas de vidro */
+  .jm-sec__glow {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(480px 340px at 88% 18%, rgba(41, 206, 181, 0.16), transparent 70%),
+      radial-gradient(520px 420px at 6% 78%, rgba(102, 190, 255, 0.14), transparent 72%);
+  }
+  .jm-sec__glow--alt {
+    background:
+      radial-gradient(520px 380px at 12% 16%, rgba(41, 206, 181, 0.14), transparent 70%),
+      radial-gradient(560px 420px at 92% 82%, rgba(102, 190, 255, 0.14), transparent 72%);
+  }
+  .jm-sec__inner {
+    position: relative;
+    z-index: 1;
+    max-width: var(--maxw);
+    margin: 0 auto;
+  }
+  .jm-split { display: grid; gap: 36px; }
+  .jm-h2 {
+    margin: 0;
+    font-family: var(--display);
+    font-size: 27px;
+    line-height: 1.28;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--deep);
+    max-width: 22ch;
+    overflow-wrap: break-word;
+  }
+  .jm-head .jm-guide { margin-top: 24px; }
+  .jm-head .jm-actions { margin-top: 30px; }
+
+  /* Cards de conteúdo (mesma receita de vidro, sem interação) */
+  .jm-stack-list { display: flex; flex-direction: column; gap: 20px; }
+  .jm-info {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 22px 20px;
+    border-radius: var(--radius);
+    background: linear-gradient(180deg, rgba(255,255,255,0.58) 0%, rgba(255,255,255,0.30) 100%);
+    -webkit-backdrop-filter: blur(18px) saturate(165%);
+    backdrop-filter: blur(18px) saturate(165%);
+    border: 1px solid rgba(21, 140, 121, 0.24);
+    box-shadow:
+      0 12px 30px -14px rgba(47, 67, 84, 0.30),
+      0 2px 6px -3px rgba(47, 67, 84, 0.12),
+      inset 0 1px 0 rgba(255,255,255,0.95),
+      inset 0 -20px 34px -26px rgba(47, 67, 84, 0.16);
+    overflow: hidden;
+  }
+  .jm-info__body { flex: 1 1 auto; min-width: 0; }
+  .jm-h3 {
+    margin: 11px 0 8px;
+    font-family: var(--display);
+    font-size: 19px;
+    line-height: 1.2;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--deep);
+  }
+  .jm-p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--deep-soft);
+    max-width: 62ch;
+  }
+
+  /* Lista em painel de vidro (imunobiológicos, credenciais) */
+  .jm-panel { padding: 8px 20px; display: block; }
+  .jm-panel li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 0;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--deep);
+    border-bottom: 1px solid rgba(47, 67, 84, 0.08);
+  }
+  .jm-panel li:last-child { border-bottom: 0; }
+  .jm-panel .jm-ico { width: 34px; height: 34px; }
+  .jm-panel .jm-ico svg { width: 17px; height: 17px; }
+  .jm-panel--cred li { align-items: flex-start; color: var(--deep-soft); }
+  .jm-panel--cred li .jm-ico { margin-top: -4px; }
+
+  .jm-name {
+    margin: 24px 0 0;
+    font-family: var(--display);
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--deep);
+  }
+
+  /* Contato */
+  .jm-label {
+    display: block;
+    margin: 0 0 10px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--deep-soft);
+  }
+
+  /* Citação final */
+  .jm-quote { margin: 0; max-width: 760px; }
+  .jm-quote blockquote {
+    margin: 0;
+    font-family: var(--display);
+    font-size: 26px;
+    line-height: 1.32;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--deep);
+  }
+  .jm-quote figcaption {
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--deep);
+  }
+  .jm-quote figcaption::before {
+    content: "";
+    width: 28px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--turq);
+  }
+
+  /* Citação em card dark */
+  .jm-quote--dark {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    max-width: 760px;
+    margin: 72px auto 0;
+    padding: 40px 26px;
+    border-radius: var(--radius);
+    background: var(--deep);
+    box-shadow: 0 24px 50px -28px rgba(47, 67, 84, 0.55);
+  }
+  .jm-quote--dark::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(420px 300px at 8% 0%, rgba(41, 206, 181, 0.20), transparent 70%),
+      radial-gradient(480px 340px at 100% 100%, rgba(102, 190, 255, 0.14), transparent 72%);
+  }
+  .jm-quote--dark blockquote { color: #FFFFFF; max-width: 24ch; }
+  .jm-quote--dark .jm-accent { color: #5FE0CC; }
+  .jm-quote--dark figcaption { color: #C9D6DF; }
+  .jm-quote--dark figcaption::before { background: #29CEB5; }
+
+  /* Rodapé dark */
+  .jm-footer {
+    padding: 28px var(--gutter) 36px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #C9D6DF;
+    text-align: center;
+    background: var(--deep);
+  }
+  .jm-footer__inner { max-width: var(--maxw); margin: 0 auto; }
+
+  /* ================= MOBILE + TABLET (≤1023): foto vertical + lâmina fosca ================= */
+  @media (max-width: 1023px) {
+    .jm-hero__bg-m {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: calc(100vw * 2532 / 1170);
+      z-index: 0;
+      background: #F4F9FA url('fundo_mobile_lps_1x.webp') center top / 100% auto no-repeat;
+    }
+    .jm-hero__stack {
+      position: relative;
+      margin-top: var(--sheet-top);
+      padding: 34px var(--gutter) 56px;
+      background: rgba(255, 255, 255, 0.42);
+      -webkit-backdrop-filter: blur(26px) saturate(150%);
+      backdrop-filter: blur(26px) saturate(150%);
+      border-top: 1px solid rgba(255, 255, 255, 0.75);
+      box-shadow: 0 -14px 34px -20px rgba(47, 67, 84, 0.28);
+    }
+    @supports not ((backdrop-filter: blur(6px)) or (-webkit-backdrop-filter: blur(6px))) {
+      .jm-hero__stack { background: rgba(255, 255, 255, 0.94); }
+    }
+  }
+
+  /* ================= TABLET (768–1023) ================= */
+  @media (min-width: 768px) {
+    .jm-hero h1 { font-size: 32px; }
+    .jm-sec { padding-top: 88px; padding-bottom: 88px; }
+    .jm-h2 { font-size: 30px; }
+    .jm-quote blockquote { font-size: 30px; }
+  }
+  @media (min-width: 768px) and (max-width: 1023px) {
+    :root { --sheet-top: 82vw; } /* logo acima das mãos na foto do tablet */
+    .jm-hero__bg-m {
+      height: calc(100vw * 2048 / 1536);
+      background-image: url('fundo_tablet_lps_1x.webp');
+    }
+    .jm-hero__stack {
+      padding-left: max(var(--gutter), calc((100% - 560px) / 2));
+      padding-right: max(var(--gutter), calc((100% - 560px) / 2));
+    }
+    .jm-sec__inner,
+    .jm-footer__inner { max-width: 560px; }
+  }
+
+  /* ================= DESKTOP (≥1024) ================= */
+  @media (min-width: 1024px) {
+    .jm-hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: #F4F9FA;
+    }
+    /* Foto full-bleed, médico à direita, sem overlay, rola junto (não fixa) */
+    /* Telas até 16:9: "cover" com o médico puxado para a direita (68%) e respiro acima da cabeça (22%) */
+    .jm-hero__bg-d {
+      display: block;
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      background: #EFF9F9 url('fundo_desktop_lps_1x.webp') 68% 22% / cover no-repeat;
+    }
+    .jm-hero__inner {
+      width: 100%;
+      padding: 64px 48px;
+      display: grid;
+      grid-template-columns: minmax(0, 500px) 1fr;
+      gap: 48px;
+    }
+    .jm-hero h1 { font-size: 44px; line-height: 1.22; }
+    .jm-logo { width: 200px; margin-bottom: 32px; }
+    .jm-hero .jm-guide { font-size: 19px; }
+    .jm-hero .jm-facts li { font-size: 17px; }
+    .jm-nb { white-space: nowrap; }
+    .jm-guide { font-size: 17px; }
+
+    .jm-actions { gap: 15px; }
+
+    /* Vidro mais transparente sobre a foto */
+    .jm-hero .jm-action {
+      background: linear-gradient(180deg, rgba(255,255,255,0.34) 0%, rgba(255,255,255,0.14) 100%);
+      -webkit-backdrop-filter: blur(10px) saturate(160%);
+      backdrop-filter: blur(10px) saturate(160%);
+      border-color: rgba(255,255,255,0.65);
+    }
+    .jm-hero .jm-action::before {
+      background: linear-gradient(180deg, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.04) 40%, rgba(255,255,255,0) 60%);
+    }
+    .jm-hero .jm-action:hover,
+    .jm-hero .jm-action:active,
+    .jm-hero .jm-action:focus-visible {
+      background: linear-gradient(180deg, rgba(214,245,239,0.62) 0%, rgba(190,236,228,0.38) 100%);
+      border-color: rgba(255,255,255,0.75);
+    }
+
+    .jm-sec { padding: 112px 48px; }
+    .jm-split {
+      grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+      gap: 64px;
+      align-items: start;
+    }
+    .jm-head { position: sticky; top: 56px; }
+    .jm-h2 { font-size: 36px; line-height: 1.24; }
+    .jm-stack-list { gap: 15px; }
+    .jm-info { padding: 24px 26px; }
+    .jm-p { font-size: 17px; }
+    .jm-panel { padding: 8px 26px; }
+    .jm-quote blockquote { font-size: 36px; line-height: 1.26; }
+    .jm-footer { padding-left: 48px; padding-right: 48px; text-align: center; }
+    .jm-quote--dark { margin-top: 112px; padding: 64px 72px; text-align: center; }
+    .jm-quote--dark blockquote { margin: 0 auto; }
+    .jm-quote--dark figcaption { justify-content: center; }
+  }
+
+  /* Telas mais largas que 16:9 (ex.: 1920×917): o "cover" ampliaria a foto e cortaria as mãos.
+     Aqui a foto é encaixada pela altura e ancorada à direita, inteira de cima a baixo. A faixa que
+     sobra à esquerda recebe a cor da borda da foto (#EFF9F9) e um degradê nos primeiros 14% esconde a emenda. */
+  @media (min-width: 1024px) and (min-aspect-ratio: 16/9) {
+    .jm-hero__bg-d { background: #EFF9F9; }
+    .jm-hero__bg-d::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      aspect-ratio: 2560 / 1440;
+      background:
+        linear-gradient(90deg, #EFF9F9 0%, rgba(239, 249, 249, 0) 14%),
+        url('fundo_desktop_lps_1x.webp') center / 100% 100% no-repeat;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .jm-hero__inner { gap: 64px; }
+    .jm-split { gap: 96px; }
+  }
+
+  /* ================= CONDIÇÕES TRATADAS ================= */
+  .jm-cond { display: grid; gap: 36px; }
+  .jm-cond__grid { display: grid; gap: 20px; }
+  /* Ícone em cima do título; sombra quase imperceptível em repouso */
+  .jm-lp .jm-info--cond {
+    flex-direction: column;
+    gap: 0;
+    box-shadow:
+      0 1px 2px rgba(47, 67, 84, 0.04),
+      inset 0 1px 0 rgba(255,255,255,0.95);
+    transition: box-shadow .28s ease, border-color .28s ease,
+                transform .42s cubic-bezier(.34, 1.56, .64, 1); /* leve overshoot = salto */
+  }
+  .jm-info--cond .jm-h3 { margin: 16px 0 8px; }
+  .jm-info--cond .jm-ico { transition: background .28s ease, color .28s ease, box-shadow .28s ease; }
+  /* Ativo: hover no desktop, card no meio da tela no mobile (classe via JS) */
+  .jm-lp .jm-info--cond.is-active {
+    transform: translateY(-6px);
+    border-color: rgba(21, 140, 121, 0.34);
+    box-shadow:
+      0 14px 32px -18px rgba(47, 67, 84, 0.22),
+      0 2px 6px -4px rgba(47, 67, 84, 0.08),
+      inset 0 1px 0 rgba(255,255,255,0.95);
+  }
+  .jm-info--cond.is-active .jm-ico {
+    color: #FFFFFF;
+    background: linear-gradient(180deg, #158C79, #127A6A);
+    box-shadow:
+      inset 0 1px 1px rgba(255,255,255,0.35),
+      0 4px 10px -4px rgba(15, 107, 93, 0.45);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .jm-lp .jm-info--cond:hover {
+      transform: translateY(-6px);
+      border-color: rgba(21, 140, 121, 0.34);
+      box-shadow:
+        0 14px 32px -18px rgba(47, 67, 84, 0.22),
+        0 2px 6px -4px rgba(47, 67, 84, 0.08),
+        inset 0 1px 0 rgba(255,255,255,0.95);
+    }
+    .jm-info--cond:hover .jm-ico {
+      color: #FFFFFF;
+      background: linear-gradient(180deg, #158C79, #127A6A);
+      box-shadow:
+        inset 0 1px 1px rgba(255,255,255,0.35),
+        0 4px 10px -4px rgba(15, 107, 93, 0.45);
+    }
+  }
+  @media (min-width: 1024px) {
+    /* Título centralizado; grade 3 + 3 + 2 (os dois últimos mais largos) */
+    .jm-head--center { position: static; text-align: center; }
+    .jm-head--center .jm-h2 { margin: 0 auto; }
+    .jm-cond { gap: 48px; }
+    .jm-cond__grid { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 20px; }
+    .jm-cond__grid > * { grid-column: span 2; }
+    .jm-cond__grid > :nth-child(n+7) { grid-column: span 3; }
+  }
+
+  /* ================= IMUNOBIOLÓGICOS — lista aberta (sem card) ================= */
+  /* Título em duas linhas no tablet/desktop (quebra após "[Alto Custo]") */
+  @media (min-width: 768px) {
+    .jm-imuno__h2 { max-width: none; }
+    .jm-imuno__l1 { display: block; }
+  }
+  .jm-lp .jm-imuno__list { margin-top: 56px; }
+  .jm-imuno__item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 24px 0;
+    border-bottom: 1px solid rgba(47, 67, 84, 0.12);
+  }
+  .jm-imuno__item:first-child { padding-top: 0; }
+  /* Mesmo círculo de vidro dos ícones de Condições tratadas */
+  .jm-imuno__ico {
+    flex: 0 0 auto;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: var(--turq-deep);
+    background: var(--white);
+    box-shadow: 0 4px 12px -6px rgba(47, 67, 84, 0.16);
+    transition: background .28s ease, color .28s ease, box-shadow .28s ease,
+                transform .42s cubic-bezier(.34, 1.56, .64, 1); /* leve overshoot = salto */
+  }
+  .jm-imuno__ico svg { width: 22px; height: 22px; display: block; }
+  .jm-imuno__item.is-active .jm-imuno__ico {
+    color: #FFFFFF;
+    background: linear-gradient(180deg, #158C79, #127A6A);
+    transform: translateY(-6px);
+    box-shadow:
+      inset 0 1px 1px rgba(255,255,255,0.35),
+      0 12px 22px -10px rgba(15, 107, 93, 0.45);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .jm-imuno__item:hover .jm-imuno__ico {
+      color: #FFFFFF;
+      background: linear-gradient(180deg, #158C79, #127A6A);
+      transform: translateY(-6px);
+      box-shadow:
+        inset 0 1px 1px rgba(255,255,255,0.35),
+        0 12px 22px -10px rgba(15, 107, 93, 0.45);
+    }
+  }
+  .jm-imuno__text { min-width: 0; }
+  .jm-imuno__title {
+    margin: 0;
+    font-family: var(--display);
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: var(--deep);
+    overflow-wrap: break-word;
+  }
+  .jm-imuno__desc {
+    margin: 6px 0 0;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--deep-soft);
+    max-width: 70ch;
+  }
+  @media (min-width: 1024px) {
+    .jm-lp .jm-imuno__list { margin-top: 72px; }
+    .jm-imuno__item { gap: 40px; padding: 30px 0; }
+    .jm-imuno__item:first-child { padding-top: 0; }
+    .jm-imuno__ico { width: 72px; height: 72px; }
+    .jm-imuno__ico svg { width: 28px; height: 28px; }
+    .jm-imuno__title { font-size: 24px; }
+    .jm-imuno__desc { font-size: 17px; margin-top: 8px; }
+  }
+
+  /* ================= SEÇÃO COLADA NA ANTERIOR (Imunobiológicos após Condições) ================= */
+  .jm-sec--joined { padding-top: 24px; }
+
+  /* ================= COMO FUNCIONA O TRATAMENTO — linha do tempo ================= */
+  .jm-lead {
+    margin: 24px 0 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--deep-soft);
+    max-width: 46ch;
+  }
+  .jm-lp .jm-steps { position: relative; list-style: none; margin: 0; padding: 0; }
+  /* Trilho único do 1º ao último círculo; topo/altura definidos via JS (--track-top / --track-h) */
+  .jm-steps__track {
+    position: absolute;
+    left: calc(var(--num, 52px) / 2 - 1.5px);
+    top: var(--track-top, 26px);
+    height: var(--track-h, 0px);
+    width: 3px;
+    border-radius: 3px;
+    background: rgba(21, 140, 121, 0.16);
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .jm-steps__fill {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(180deg, #29CEB5, #158C79);
+    transform: scaleY(var(--p, 0));
+    transform-origin: top;
+  }
+  .jm-steps { --num: 52px; }
+  .jm-step {
+    position: relative;
+    display: flex;
+    gap: 20px;
+    padding-bottom: 40px;
+  }
+  .jm-step:last-child { padding-bottom: 0; }
+  .jm-step__num {
+    position: relative;
+    z-index: 1;
+    flex: 0 0 auto;
+    width: var(--num);
+    height: var(--num);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--white);
+    border: 1.5px solid rgba(21, 140, 121, 0.45);
+    box-shadow: 0 4px 12px -6px rgba(47, 67, 84, 0.16);
+    font-family: var(--display);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--turq-deep);
+    transition: background .3s ease, color .3s ease, border-color .3s ease, box-shadow .3s ease;
+  }
+  /* Círculo alcançado pelo preenchimento */
+  .jm-step.is-on .jm-step__num {
+    color: #FFFFFF;
+    border-color: #158C79;
+    background: linear-gradient(180deg, #158C79, #127A6A);
+    box-shadow:
+      inset 0 1px 1px rgba(255,255,255,0.35),
+      0 10px 20px -10px rgba(15, 107, 93, 0.45);
+  }
+  .jm-step__body { min-width: 0; padding-top: 12px; }
+  .jm-step__title {
+    margin: 0;
+    font-family: var(--display);
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: var(--deep);
+  }
+  .jm-step__desc {
+    margin: 8px 0 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--deep-soft);
+    max-width: 52ch;
+  }
+  @media (min-width: 1024px) {
+    .jm-sec--joined { padding-top: 32px; }
+    .jm-lead { font-size: 17px; }
+    .jm-steps { --num: 64px; }
+    .jm-step { gap: 28px; padding-bottom: 56px; }
+    .jm-step__num { font-size: 24px; }
+    .jm-step__body { padding-top: 16px; }
+    .jm-step__title { font-size: 24px; }
+    .jm-step__desc { font-size: 17px; }
+  }
+
+  /* ================= VERSÃO DARK (Cobertura por convênio) — fundo --deep, nunca preto ================= */
+  .jm-sec--dark { background: var(--deep); }
+  .jm-sec--dark .jm-sec__glow {
+    background:
+      radial-gradient(520px 380px at 10% 10%, rgba(41, 206, 181, 0.16), transparent 70%),
+      radial-gradient(600px 440px at 94% 90%, rgba(102, 190, 255, 0.12), transparent 72%);
+  }
+  .jm-sec--dark .jm-eyebrow { color: #5FE0CC; }                /* 6,4:1 sobre --deep */
+  .jm-sec--dark .jm-h2 { color: #FFFFFF; }                     /* 10,2:1 */
+  .jm-sec--dark .jm-accent { color: #5FE0CC; }
+  .jm-sec--dark .jm-imuno__item { border-bottom-color: rgba(255, 255, 255, 0.12); }
+  .jm-sec--dark .jm-imuno__title { color: #FFFFFF; }
+  .jm-sec--dark .jm-imuno__desc { color: #C9D6DF; }            /* 6,9:1 */
+  .jm-sec--dark .jm-imuno__ico { box-shadow: 0 6px 16px -8px rgba(12, 22, 30, 0.45); }
+  /* Ativo no dark: turquesa claro e saturado; check escuro para manter o contraste */
+  .jm-sec--dark .jm-imuno__item.is-active .jm-imuno__ico {
+    color: #0B4A40;
+    background: linear-gradient(180deg, #4BE3CC 0%, #29CEB5 100%);
+    box-shadow:
+      inset 0 1px 1px rgba(255,255,255,0.55),
+      0 12px 22px -10px rgba(12, 22, 30, 0.55),
+      0 0 24px 3px rgba(41, 206, 181, 0.38);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .jm-sec--dark .jm-imuno__item:hover .jm-imuno__ico {
+      color: #0B4A40;
+      background: linear-gradient(180deg, #4BE3CC 0%, #29CEB5 100%);
+      box-shadow:
+        inset 0 1px 1px rgba(255,255,255,0.55),
+        0 12px 22px -10px rgba(12, 22, 30, 0.55),
+        0 0 24px 3px rgba(41, 206, 181, 0.38);
+    }
+  }
+
+  /* ================= SOBRE O DR. JOEL — texto à esquerda, foto à direita ================= */
+  .jm-about { display: grid; gap: 40px; }
+  .jm-br-d { display: none; } /* quebras de linha que só valem no desktop */
+  .jm-lp .jm-about__list { margin-top: 28px; padding: 0; }
+  .jm-about__list li:first-child { border-top: 1px solid rgba(47, 67, 84, 0.08); }
+  .jm-about__list li:last-child { border-bottom: 1px solid rgba(47, 67, 84, 0.08); }
+  .jm-about .jm-actions { margin-top: 32px; }
+  /* Ícones das credenciais: mudam de cor no hover (desktop) e no meio da tela (toque) */
+  .jm-about__list .jm-ico { transition: background .28s ease, color .28s ease, box-shadow .28s ease; }
+  .jm-about__list li.is-active .jm-ico {
+    color: #FFFFFF;
+    background: linear-gradient(180deg, #158C79, #127A6A);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,0.35), 0 6px 14px -6px rgba(15, 107, 93, 0.45);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .jm-about__list li:hover .jm-ico {
+      color: #FFFFFF;
+      background: linear-gradient(180deg, #158C79, #127A6A);
+      box-shadow: inset 0 1px 1px rgba(255,255,255,0.35), 0 6px 14px -6px rgba(15, 107, 93, 0.45);
+    }
+  }
+  .jm-about__photo {
+    order: -1;
+    position: relative;
+    margin: 0;
+    aspect-ratio: 4 / 5;
+    border-radius: var(--radius);
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    background: linear-gradient(180deg, #EAF7F5 0%, #F6FBFC 100%);
+    border: 1px dashed rgba(21, 140, 121, 0.35);
+    box-shadow: 0 18px 40px -24px rgba(47, 67, 84, 0.30);
+  }
+  .jm-about__photo img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 20%;
+  }
+  .jm-about__photo:has(img) { border: 0; padding: 0; }
+  /* Bento grid: a imagem já traz as fotos arredondadas e os espaços transparentes,
+     então o contêiner fica sem fundo, borda, sombra nem recorte, na proporção da imagem */
+  .jm-about__photo--bento {
+    aspect-ratio: 596 / 753;
+    background: none;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+    overflow: visible;
+  }
+  .jm-about__photo--bento img { object-fit: contain; object-position: center; }
+  .jm-about__ph { font-size: 13px; color: var(--deep-soft); text-align: center; }
+  @media (min-width: 1024px) {
+    /* Texto mais estreito (500px, mesma coluna da primeira dobra); a área da imagem fica com o
+       espaço restante, preparada para receber um bento grid de imagens */
+    .jm-about {
+      grid-template-columns: minmax(0, 500px) minmax(0, 1fr);
+      gap: 64px;
+      align-items: start;
+    }
+    .jm-about__photo { order: 0; position: sticky; top: 56px; }
+    /* Quebras do título "Sobre o especialista": "com" na 2ª linha e "de" na 3ª (só desktop) */
+    .jm-br-d { display: inline; }
+  }
+
+  /* Timeline no dark (Como funciona o tratamento) */
+  .jm-sec--dark .jm-lead { color: #C9D6DF; }
+  .jm-sec--dark .jm-step__title { color: #FFFFFF; }
+  .jm-sec--dark .jm-step__desc { color: #C9D6DF; }
+  .jm-sec--dark .jm-steps__track { background: rgba(255, 255, 255, 0.14); }
+  .jm-sec--dark .jm-steps__fill { background: linear-gradient(180deg, #5FE0CC, #29CEB5); }
+  .jm-sec--dark .jm-step__num {
+    border-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 6px 16px -8px rgba(12, 22, 30, 0.45);
+  }
+  .jm-sec--dark .jm-step.is-on .jm-step__num {
+    color: #0B4A40;
+    border-color: #4BE3CC;
+    background: linear-gradient(180deg, #4BE3CC 0%, #29CEB5 100%);
+    box-shadow:
+      inset 0 1px 1px rgba(255,255,255,0.55),
+      0 12px 22px -10px rgba(12, 22, 30, 0.55),
+      0 0 24px 3px rgba(41, 206, 181, 0.38);
+  }
+
+  /* ================= LOCALIZAÇÃO — texto à esquerda, mapa à direita ================= */
+  .jm-local { display: grid; gap: 40px; }
+  .jm-local__info { margin-top: 28px; display: grid; gap: 24px; }
+  .jm-local__block .jm-label { margin-bottom: 6px; }
+  .jm-local__text {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--deep);
+  }
+  .jm-local__text a { color: var(--turq-deep); font-weight: 600; text-decoration: none; }
+  .jm-local__text a:hover { text-decoration: underline; }
+  .jm-local__text a:focus-visible { outline: 2px solid var(--turq); outline-offset: 3px; border-radius: 4px; }
+  .jm-local .jm-actions { margin-top: 32px; }
+  .jm-local__map {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    min-height: 300px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: #E6EEF1;
+    border: 1px solid rgba(21, 140, 121, 0.24);
+    box-shadow: 0 18px 40px -24px rgba(47, 67, 84, 0.30);
+  }
+  .jm-local__map iframe { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  @media (min-width: 1024px) {
+    .jm-local {
+      grid-template-columns: minmax(0, 440px) minmax(0, 1fr);
+      gap: 64px;
+      align-items: center;
+    }
+    .jm-local__map { aspect-ratio: auto; height: 480px; }
+  }
+
+  /* ================= TRANSIÇÕES DE ENTRADA (Condições tratadas para baixo) =================
+     Só ativa com JS (.jm-reveal-on no .jm-lp); sem JS ou com movimento reduzido tudo aparece normal.
+     Usa "translate" (não "transform") para não brigar com o salto dos cards no hover. */
+  .jm-reveal-on .jm-reveal {
+    opacity: 0;
+    translate: 0 28px;
+    transition:
+      opacity .7s ease var(--d, 0ms),
+      translate .8s cubic-bezier(.22, 1, .36, 1) var(--d, 0ms);
+  }
+  .jm-reveal-on .jm-reveal.is-in { opacity: 1; translate: 0 0; }
+  /* Cards de Condições: mantém também as transições de hover/ativo */
+  .jm-reveal-on .jm-info--cond.jm-reveal {
+    transition:
+      opacity .7s ease var(--d, 0ms),
+      translate .8s cubic-bezier(.22, 1, .36, 1) var(--d, 0ms),
+      box-shadow .28s ease,
+      border-color .28s ease,
+      transform .42s cubic-bezier(.34, 1.56, .64, 1);
+  }
+
+  @media (min-width: 1024px) {
+    .jm-imuno {
+      display: grid;
+      grid-template-columns: minmax(0, 460px) minmax(0, 1fr);
+      grid-template-areas: "eyebrow ." "title list";
+      column-gap: 80px;
+      align-items: start;
+    }
+    .jm-imuno > .jm-eyebrow { grid-area: eyebrow; justify-self: start; }
+    .jm-imuno > .jm-h2 { grid-area: title; text-wrap: balance; }
+    .jm-imuno__l1 { display: inline; }
+    .jm-lp .jm-imuno__list { grid-area: list; margin-top: 0; }
+  }
+
+  @media (min-width: 1024px) {
+    .jm-split--center { align-items: start; }
+    .jm-split--center .jm-head { position: static; }
+    /* eyebrow como bloco: o topo do texto encosta no topo do círculo 1 (sem o respiro da linha) */
+    .jm-split--center .jm-head .jm-eyebrow { display: flex; width: fit-content; }
+  }
+
+  /* ================= CTA PRINCIPAL — verde WhatsApp (#25D366), mesma receita de vidro =================
+     Texto verde-escuro #073B2A: 5,1–6,4:1 (branco sobre esse verde ficaria em ~2:1) */
+  .jm-lp .jm-action--primary {
+    color: #073B2A;
+    background: linear-gradient(180deg, rgba(37,211,102,0.97) 0%, rgba(30,190,90,0.98) 100%);
+    -webkit-backdrop-filter: blur(18px) saturate(165%);
+    backdrop-filter: blur(18px) saturate(165%);
+    border-color: rgba(255,255,255,0.30);
+    box-shadow:
+      0 12px 30px -14px rgba(7, 59, 42, 0.45),
+      0 2px 6px -3px rgba(7, 59, 42, 0.18),
+      inset 0 1px 0 rgba(255,255,255,0.55),
+      inset 0 -20px 34px -26px rgba(7, 59, 42, 0.40);
+  }
+  .jm-lp .jm-action--primary::before {
+    background: linear-gradient(180deg, rgba(255,255,255,0.32) 0%, rgba(255,255,255,0.05) 40%, rgba(255,255,255,0) 60%);
+  }
+  .jm-lp .jm-action--primary:hover,
+  .jm-lp .jm-action--primary:active,
+  .jm-lp .jm-action--primary:focus-visible {
+    background: linear-gradient(180deg, rgba(30,190,90,0.98) 0%, rgba(26,174,82,0.99) 100%);
+    border-color: rgba(255,255,255,0.50);
+    box-shadow:
+      0 20px 40px -16px rgba(7, 59, 42, 0.45),
+      0 3px 8px -3px rgba(7, 59, 42, 0.18),
+      inset 0 1px 0 rgba(255,255,255,0.60),
+      inset 0 -22px 36px -26px rgba(7, 59, 42, 0.45),
+      0 0 24px 3px rgba(37, 211, 102, 0.40);
+  }
+  /* Texto e seta brancos (pedido do cliente); sombra leve ajuda a leitura sobre o verde claro */
+  .jm-lp .jm-action--primary .jm-action__title { color: #FFFFFF; text-shadow: 0 1px 2px rgba(7, 59, 42, 0.45); }
+  .jm-lp .jm-action--primary .jm-arrow { color: #FFFFFF; filter: drop-shadow(0 1px 1px rgba(7, 59, 42, 0.45)); }
+  .jm-lp .jm-action--primary .jm-ico svg { filter: drop-shadow(0 1px 1px rgba(7, 59, 42, 0.45)); }
+  .jm-lp .jm-action--primary:hover .jm-arrow,
+  .jm-lp .jm-action--primary:focus-visible .jm-arrow { color: #FFFFFF; }
+  /* Círculo do ícone em vidro claro sobre o turquesa; pulso com anel branco */
+  .jm-lp .jm-action--primary .jm-ico {
+    color: #FFFFFF;
+    background: linear-gradient(180deg, rgba(255,255,255,0.30), rgba(255,255,255,0.10));
+    animation-name: jm-ico-pulse-light;
+  }
+  @keyframes jm-ico-pulse-light {
+    0% {
+      box-shadow: inset 0 1px 1px rgba(255,255,255,0.55), inset 0 -2px 4px rgba(4,40,34,0.20),
+                  0 4px 10px -4px rgba(4,40,34,0.35), 0 0 0 0 rgba(255,255,255,0.45);
+    }
+    70% {
+      box-shadow: inset 0 1px 1px rgba(255,255,255,0.55), inset 0 -2px 4px rgba(4,40,34,0.20),
+                  0 4px 10px -4px rgba(4,40,34,0.35), 0 0 0 8px rgba(255,255,255,0);
+    }
+    100% {
+      box-shadow: inset 0 1px 1px rgba(255,255,255,0.55), inset 0 -2px 4px rgba(4,40,34,0.20),
+                  0 4px 10px -4px rgba(4,40,34,0.35), 0 0 0 0 rgba(255,255,255,0);
+    }
+  }
+
+  /* ================= CONVITE AO SCROLL (só desktop) =================
+     Linha fina na divisa entre a primeira dobra e a seção seguinte, com um círculo de vidro
+     no centro (metade sobre a foto, metade sobre a seção) e uma seta que sobe e desce.
+     Só visual: não é clicável nem recebe foco. */
+  .jm-scrollcue { display: none; }
+  @media (min-width: 1024px) {
+    .jm-scrollcue {
+      display: block;
+      position: relative;
+      z-index: 3;
+      height: 0;
+      pointer-events: none;
+    }
+    .jm-scrollcue::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: min(calc(var(--maxw) - 96px), calc(100% - 96px));
+      height: 1px;
+      transform: translate(-50%, -0.5px);
+      background: linear-gradient(90deg,
+        rgba(21, 140, 121, 0) 0%,
+        rgba(21, 140, 121, 0.32) 28%,
+        rgba(21, 140, 121, 0.32) 72%,
+        rgba(21, 140, 121, 0) 100%);
+    }
+    .jm-scrollcue__btn {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 54px;
+      height: 54px;
+      transform: translate(-50%, -50%);
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--turq-deep);
+      background: linear-gradient(180deg, rgba(255,255,255,0.86) 0%, rgba(255,255,255,0.62) 100%);
+      -webkit-backdrop-filter: blur(14px) saturate(160%);
+      backdrop-filter: blur(14px) saturate(160%);
+      border: 1px solid rgba(21, 140, 121, 0.24);
+      box-shadow:
+        0 12px 28px -12px rgba(47, 67, 84, 0.32),
+        inset 0 1px 0 rgba(255, 255, 255, 0.95);
+    }
+    .jm-scrollcue__btn svg {
+      width: 22px;
+      height: 22px;
+      display: block;
+      animation: jm-cue-bob 1.8s ease-in-out infinite;
+    }
+  }
+  /* Seta desce um pouco e volta, sem parar: convite discreto para rolar */
+  @keyframes jm-cue-bob {
+    0%, 100% { transform: translateY(-3px); }
+    50%      { transform: translateY(4px); }
+  }
+
+  /* ================= MOVIMENTO REDUZIDO ================= */
+  @media (prefers-reduced-motion: reduce) {
+    .jm-scrollcue__btn svg { animation: none; }
+    .jm-eyebrow::before,
+    .jm-action .jm-ico { animation: none; }
+    .jm-action, .jm-action::after, .jm-arrow { transition: none; }
+    .jm-action:hover,
+    .jm-action:hover .jm-arrow,
+    .jm-action:focus-visible .jm-arrow { transform: none; }
+    .jm-lp .jm-info--cond, .jm-info--cond .jm-ico, .jm-imuno__ico, .jm-step__num, .jm-about__list .jm-ico { transition: none; }
+    .jm-lp .jm-info--cond.is-active, .jm-lp .jm-info--cond:hover,
+    .jm-imuno__item.is-active .jm-imuno__ico, .jm-imuno__item:hover .jm-imuno__ico { transform: none; }
+  }
+
+  /* ================= SEM BACKDROP-FILTER ================= */
+  @supports not ((backdrop-filter: blur(6px)) or (-webkit-backdrop-filter: blur(6px))) {
+    .jm-action, .jm-info,
+    .jm-hero .jm-action { background: linear-gradient(180deg, #FFFFFF, #F6FBFC); }
+    .jm-lp .jm-action--primary { background: linear-gradient(180deg, #25D366, #1EBE5A); }
+  }
+</style>
+</head>
+<body>
+<div class="jm-lp">
+
+  <!-- ============ HERO ============ -->
+  <header class="jm-hero">
+    <div class="jm-hero__bg-d" aria-hidden="true"></div>
+    <div class="jm-hero__bg-m" aria-hidden="true"></div>
+
+    <div class="jm-hero__inner">
+      <div class="jm-hero__stack">
+        <img class="jm-logo" src="logo.png" alt="Molecular Allergy" width="226" height="60" />
+        <h1>Sou Dr. Joel Marcos, <span class="jm-accent">Alergista <span class="jm-nb">e Imunologista</span></span> em Cuiabá - MT!</h1>
+        <p class="jm-guide">Avaliação, diagnóstico e tratamento humanizado.</p>
+        <ul class="jm-facts">
+          <li>Especialista pela Sociedade Brasileira de Alergia e Imunologia</li>
+          <li>Convênios mediante reembolso: Pax-Cliniprev, Unimed, Bradesco, Hapvida e outros.</li>
+        </ul>
+
+        <div class="jm-actions jm-actions--cta">
+          <a class="jm-action jm-action--primary" href="https://molecularallergy.com.br/agendar-consulta-cuiaba" aria-label="Agende a sua consulta pelo WhatsApp">
+            <span class="jm-ico" aria-hidden="true">
+              <!-- WhatsApp (traço, mesmo estilo dos demais ícones) -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></svg>
+            </span>
+            <span class="jm-action__text">
+              <span class="jm-action__title">Agende a sua consulta</span>
+            </span>
+            <span class="jm-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Convite ao scroll (só desktop): linha na divisa + seta animada. Só visual, não é clicável. -->
+  <div class="jm-scrollcue" aria-hidden="true">
+    <span class="jm-scrollcue__btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m6 13 6 6 6-6"/></svg>
+    </span>
+  </div>
+
+  <main>
+
+    <!-- ============ SINTOMAS / CONDIÇÕES ============ -->
+    <section class="jm-sec" aria-labelledby="jm-sintomas">
+      <div class="jm-sec__glow" aria-hidden="true"></div>
+      <div class="jm-sec__inner jm-cond">
+        <div class="jm-head jm-head--center">
+          <span class="jm-eyebrow">Condições tratadas</span>
+          <h2 class="jm-h2" id="jm-sintomas">O que você pode estar <span class="jm-accent">sentindo?</span></h2>
+        </div>
+
+        <div class="jm-cond__grid">
+          <article class="jm-info jm-info--cond">
+            <span class="jm-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.8 19.6A2 2 0 1 0 14 16H2"/><path d="M17.5 8a2.5 2.5 0 1 1 2 4H2"/><path d="M9.8 4.4A2 2 0 1 1 11 8H2"/></svg></span>
+            <div class="jm-info__body">
+              <h3 class="jm-h3">Alergia Respiratória</h3>
+              <p class="jm-p">Olhos lacrimejando, corrimento nasal, tosse seca, espirros, irritação nos olhos, no nariz ou na garganta e até dor de cabeça, podem ser sintomas de uma alergia respiratória, entre elas: Rinite Alérgica, Asma, Tosse Crônica e Rinossinusites. Essas alergias correspondem a uma resposta exagerada do sistema imunológico à substâncias como pó, pêlos de animais, fungos, ácaros e pólens.</p>
+            </div>
+          </article>
+
+          <article class="jm-info jm-info--cond">
+            <span class="jm-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z"/><path d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97"/></svg></span>
+            <div class="jm-info__body">
+              <h3 class="jm-h3">Dermatite de Contato</h3>
+              <p class="jm-p">Vermelhidão, coceira, descamação, bolinhas com ou sem líquido e pequenas feridas localizadas com aparência de queimadura são fortes sintomas de dermatite. Essas reações são causadas pelo contato de alguma substância ou objeto irritante como cosméticos, perfumes, sabonetes, produtos de limpeza, bijuterias, metais como níquel, cromo e paládio das lâminas de barbear, além da radiação solar.</p>
+            </div>
+          </article>
+
+          <article class="jm-info jm-info--cond">
+            <span class="jm-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></span>
+            <div class="jm-info__body">
+              <h3 class="jm-h3">Conjuntivites Alérgicas</h3>
+              <p class="jm-p">Olhos com lacrimação constante, vermelhidão, coceira, dor, sensação de areia nos olhos e sensibilidade à luz são fortes indícios de uma conjuntivite alérgica. Essas reações são causadas pela exposição dos olhos à substâncias como poeira, pêlos de animais, pólens, fungos e ácaros. Evite coçar os olhos e entre em contato para agendar a sua consulta.</p>
+            </div>
+          </article>
+
+          <article class="jm-info jm-info--cond">
+            <span class="jm-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span>
+            <div class="jm-info__body">
+              <h3 class="jm-h3">Anafilaxia</h3>
+              <p class="jm-p">As reações começam rapidamente e podem se desenvolver em minutos ou horas, causando sintomas como pressão baixa, inchaço dos lábios e da boca, dificuldade para respirar, sensação de bolo na garganta, coceira generalizada e vermelhidão na pele. Essas reações podem ser causadas por alguns alimentos como ovo, leite, glúten, amendoim e crustáceos, além de medicamentos, picadas de insetos e alguns materiais como látex.</p>
+            </div>
+          </article>
+
+          <article class="jm-info jm-info--cond">
+            <span class="jm-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg></span>
+            <div class="jm-info__body">
+              <h3 class="jm-h3">Erros Inatos da Imunidade - EII</h3>
+              <p class="jm-p">Também chamado de Imunodeficiência Primária, está associada ou predispõe os pacientes a diversas complicações, como infecções, doenças autoimunes, linfomas e outros tipos de câncer. A imunodeficiência primária é determinada geneticamente e pode ser herdada. Os distúrbios podem ocorrer de modo isolado ou como parte de alguma síndrome. Se manifestam tipicamente na infância por infecções recorrentes.</p>
+            </div>
+          </article>
+
+          <article class="jm-info jm-info--cond">
+            <span class="jm-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="2.5"/><circle cx="16" cy="9" r="2"/><circle cx="9" cy="16" r="2"/><circle cx="16.5" cy="16" r="2.5"/></svg></span>
+            <div class="jm-info__body">
+              <h3 class="jm-h3">Urticárias</h3>
+              <p class="jm-p">O surgimento de manchas avermelhadas que ficam inchadas, coceira e, em casos mais severos, inchaço dos lábios, olhos e garganta e dificuldade de respirar são fortes sintomas de urticária. Essas reações podem ser causadas principalmente por infecções virais, medicamentos, alimentos, picadas de insetos, alergia ao tecido da roupa, corantes e conservantes alimentícios e variação de temperatura e pressão.</p>
+            </div>
+          </article>
+
+          <article class="jm-info jm-info--cond">
+            <span class="jm-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 2 4 4"/><path d="m17 7 3-3"/><path d="M19 9 8.7 19.3c-1 1-2.5 1-3.4 0l-.6-.6c-1-1-1-2.5 0-3.4L15 5"/><path d="m9 11 4 4"/><path d="m5 19-3 3"/><path d="m14 4 6 6"/></svg></span>
+            <div class="jm-info__body">
+              <h3 class="jm-h3">Imunoterapia - Vacinas</h3>
+              <p class="jm-p">Vacina para Rinite Alérgica, Asma Alérgica, Mosquitos, Abelhas, Formigas, Vespa, Marimbondos e Urticárias.</p>
+            </div>
+          </article>
+
+          <article class="jm-info jm-info--cond">
+            <span class="jm-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg></span>
+            <div class="jm-info__body">
+              <h3 class="jm-h3">Perícias Judiciais</h3>
+              <p class="jm-p">Realizamos perícias judiciais para TJT, TJ, MPE e DP.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ IMUNOBIOLÓGICOS ============ -->
+    <section class="jm-sec jm-sec--dark" aria-labelledby="jm-imuno">
+      <div class="jm-sec__glow jm-sec__glow--alt" aria-hidden="true"></div>
+      <div class="jm-sec__inner jm-imuno">
+        <span class="jm-eyebrow">Cobertura por convênio</span>
+        <h2 class="jm-h2 jm-imuno__h2" id="jm-imuno"><span class="jm-imuno__l1">IMUNOBIOLÓGICOS <span class="jm-nw">[Alto Custo]</span></span> cobertos pelos <span class="jm-nw"><span class="jm-accent">CONVÊNIOS</span> para:</span></h2>
+        <ul class="jm-imuno__list">
+          <li class="jm-imuno__item">
+            <span class="jm-imuno__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+            <div class="jm-imuno__text">
+              <h3 class="jm-imuno__title">Dermatite Atopica-DA</h3>
+              <p class="jm-imuno__desc">Inflamação crônica da pele, com ressecamento e coceira intensa, que evolui em crises.</p>
+            </div>
+          </li>
+          <li class="jm-imuno__item">
+            <span class="jm-imuno__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+            <div class="jm-imuno__text">
+              <h3 class="jm-imuno__title">Urticaria Crônica-UCE</h3>
+              <p class="jm-imuno__desc">Placas avermelhadas e coceira que surgem sem causa aparente e persistem por mais de seis semanas.</p>
+            </div>
+          </li>
+          <li class="jm-imuno__item">
+            <span class="jm-imuno__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+            <div class="jm-imuno__text">
+              <h3 class="jm-imuno__title">Asma Brônquica Alergica / Eosinofílica/Mista</h3>
+              <p class="jm-imuno__desc">Asma de difícil controle, de perfil alérgico, eosinofílico ou misto, que persiste apesar do tratamento habitual.</p>
+            </div>
+          </li>
+          <li class="jm-imuno__item">
+            <span class="jm-imuno__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+            <div class="jm-imuno__text">
+              <h3 class="jm-imuno__title">Polipose Nasal</h3>
+              <p class="jm-imuno__desc">Pólipos na mucosa do nariz e dos seios da face, que causam obstrução nasal e redução do olfato.</p>
+            </div>
+          </li>
+          <li class="jm-imuno__item">
+            <span class="jm-imuno__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+            <div class="jm-imuno__text">
+              <h3 class="jm-imuno__title">Prurido Nodular</h3>
+              <p class="jm-imuno__desc">Nódulos firmes na pele, acompanhados de coceira intensa e persistente.</p>
+            </div>
+          </li>
+          <li class="jm-imuno__item">
+            <span class="jm-imuno__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+            <div class="jm-imuno__text">
+              <h3 class="jm-imuno__title">Esofagite Eosinofílica</h3>
+              <p class="jm-imuno__desc">Inflamação do esôfago por eosinófilos, que pode causar dificuldade para engolir.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ SOBRE O MÉDICO ============ -->
+    <section class="jm-sec" aria-labelledby="jm-sobre">
+      <div class="jm-sec__glow" aria-hidden="true"></div>
+      <div class="jm-sec__inner jm-about">
+        <div class="jm-about__content">
+          <span class="jm-eyebrow">Sobre o especialista</span>
+          <h2 class="jm-h2" id="jm-sobre">Dr. Joel Marcos Pereira <br class="jm-br-d" />com mais de <span class="jm-accent">27 anos <br class="jm-br-d" />de experiência</span></h2>
+
+          <ul class="jm-panel jm-panel--cred jm-about__list">
+            <li><span class="jm-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></span>Prêmio Excelência e Qualidade Brasil de Medicina 2020 - Título de Comendador</li>
+            <li><span class="jm-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Milhares de pacientes tratados dos mais diversos tipos de alergia</li>
+            <li><span class="jm-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Médico pela Universidade de Mogi das Cruzes – CRM-MT 4932</li>
+            <li><span class="jm-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Especialização em Alergia e Imunologia Clínica no Hospital do Servidor Público Estadual de São Paulo – RQE 4246</li>
+            <li><span class="jm-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Título de Especialista pela Associação Médica Brasileira de Alergia e Imunologia – ASBAI</li>
+            <li><span class="jm-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Membro da Academia Europeia de Alergia e Imunologia Clínica – EAACI</li>
+            <li><span class="jm-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Diversos cursos de aperfeiçoamento nos Estados Unidos, Consultas Sociais e trabalhos voluntários em ONG's</li>
+        </ul>
+
+          <div class="jm-actions jm-actions--cta">
+            <a class="jm-action jm-action--primary" href="https://molecularallergy.com.br/agendar-consulta-cuiaba" aria-label="Agende a sua consulta pelo WhatsApp">
+              <span class="jm-ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></svg>
+              </span>
+              <span class="jm-action__text">
+                <span class="jm-action__title">Agende a sua consulta</span>
+              </span>
+              <span class="jm-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+              </span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Bento grid do Dr. Joel: imagem única (596×753) com as quatro fotos já compostas e fundo transparente -->
+        <figure class="jm-about__photo jm-about__photo--bento">
+          <img src="img-expert-bento.webp" width="596" height="753" loading="lazy"
+               alt="Dr. Joel Marcos Pereira em quatro fotos: recebendo o Prêmio Excelência e Qualidade Brasil 2020 como Comendador e no consultório" />
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ COMO FUNCIONA O TRATAMENTO (abordagem + passo a passo) ============ -->
+    <section class="jm-sec jm-sec--dark" aria-labelledby="jm-como">
+      <div class="jm-sec__glow" aria-hidden="true"></div>
+      <div class="jm-sec__inner jm-split jm-split--center">
+        <div class="jm-head">
+          <span class="jm-eyebrow">Passo a passo</span>
+          <h2 class="jm-h2" id="jm-como">Como funciona o <span class="jm-accent">tratamento?</span></h2>
+          <p class="jm-lead">Os tratamentos são variados e de acordo com a demanda do paciente. Será feita uma investigação minuciosa com base nas suas queixas, análises clínicas e exames laboratoriais. Tratamentos de alergias e do sistema imunológico devem ser realizados com o máximo de segurança, de forma humanizada e que respeitem rigorosamente as normas de farmacovigilância.</p>
+        </div>
+
+        <ol class="jm-steps">
+          <li class="jm-steps__track" role="presentation" aria-hidden="true"><span class="jm-steps__fill"></span></li>
+          <li class="jm-step">
+            <span class="jm-step__num" aria-hidden="true">1</span>
+            <div class="jm-step__body">
+              <h3 class="jm-step__title">Agende sua consulta</h3>
+              <p class="jm-step__desc">Clique no botão para agendar a sua consulta via WhatsApp.</p>
+            </div>
+          </li>
+          <li class="jm-step">
+            <span class="jm-step__num" aria-hidden="true">2</span>
+            <div class="jm-step__body">
+              <h3 class="jm-step__title">Consulta presencial</h3>
+              <p class="jm-step__desc">Será feita uma anamnese, avaliação clínica minuciosa e, se necessário, pedidos de exames laboratoriais e/ou de imagem.</p>
+            </div>
+          </li>
+          <li class="jm-step">
+            <span class="jm-step__num" aria-hidden="true">3</span>
+            <div class="jm-step__body">
+              <h3 class="jm-step__title">Retorno</h3>
+              <p class="jm-step__desc">Em até 30 dias será marcado o retorno para avaliação de exames solicitados e reavaliação de conduta diagnóstica e terapêutica.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ ONDE NOS ENCONTRAMOS ============ -->
+    <section class="jm-sec jm-sec--ice" aria-labelledby="jm-onde">
+      <div class="jm-sec__glow jm-sec__glow--alt" aria-hidden="true"></div>
+      <div class="jm-sec__inner jm-local">
+        <div class="jm-local__content">
+          <span class="jm-eyebrow">Localização</span>
+          <h2 class="jm-h2" id="jm-onde">Onde nos <span class="jm-accent">encontramos</span></h2>
+
+          <div class="jm-local__info">
+            <div class="jm-local__block">
+              <span class="jm-label">Endereço:</span>
+              <p class="jm-local__text">Clínica Prímula<br />Rua Topázio, 136<br />Bosque da Saúde, Cuiabá/MT</p>
+            </div>
+            <div class="jm-local__block">
+              <span class="jm-label">Telefone e WhatsApp:</span>
+              <p class="jm-local__text"><a href="https://wa.me/5565984737377" target="_blank" rel="noopener">(65) 98473-7377</a></p>
+            </div>
+          </div>
+
+          <div class="jm-actions jm-actions--cta">
+            <a class="jm-action jm-action--primary" href="https://molecularallergy.com.br/agendar-consulta-cuiaba" aria-label="Agende a sua consulta pelo WhatsApp">
+              <span class="jm-ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></svg>
+              </span>
+              <span class="jm-action__text">
+                <span class="jm-action__title">Agende a sua consulta</span>
+              </span>
+              <span class="jm-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+              </span>
+            </a>
+          </div>
+        </div>
+
+        <div class="jm-local__map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3843.016952618215!2d-56.08203442487408!3d-15.590743085021527!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x939db1b09032f677%3A0xf5a231a97c607a67!2zQ2zDrW5pY2EgUHLDrW11bGEgLSBTdWEgQ2zDrW5pY2EgTcOpZGljYSBlbSBDdWlhYsOh!5e0!3m2!1spt-BR!2sbr!4v1790816446115!5m2!1spt-BR!2sbr" title="Mapa: Clínica Prímula, Rua Topázio, 136, Bosque da Saúde, Cuiabá/MT" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+      </div>
+
+      <!-- Citação final em card dark -->
+      <div class="jm-sec__inner">
+        <figure class="jm-quote jm-quote--dark">
+          <blockquote>“Já tratei diversos tipos de alergia nos meus <span class="jm-accent">27 anos de experiência</span>”</blockquote>
+          <figcaption>Dr. Joel Marcos Pereira</figcaption>
+        </figure>
+      </div>
+    </section>
+
+
+  </main>
+
+  <footer class="jm-footer">
+    <div class="jm-footer__inner">© 2026 Molecular Allergy | Todos os direitos reservados.</div>
+  </footer>
+
+</div>
+<script>
+  /* Condições tratadas e Imunobiológicos: em telas de toque, ativa o item quando ele passa pelo meio da tela */
+  (function () {
+    var cards = document.querySelectorAll('.jm-info--cond, .jm-imuno__item, .jm-about__list li');
+    if (!cards.length || !('IntersectionObserver' in window)) return;
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { e.target.classList.toggle('is-active', e.isIntersecting); });
+    }, { rootMargin: '-49% 0px -49% 0px', threshold: 0 });
+    cards.forEach(function (c) { io.observe(c); });
+  })();
+  /* Como funciona: preenchimento da timeline do 1 ao 3.
+     Desktop: anima no hover (≈1,6s). Toque: acompanha a rolagem. */
+  (function () {
+    var ol = document.querySelector('.jm-steps');
+    if (!ol) return;
+    var steps = [].slice.call(ol.querySelectorAll('.jm-step'));
+    var nums = steps.map(function (s) { return s.querySelector('.jm-step__num'); });
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    var stops = [], p = 0, raf = 0;
+
+    function measure() {
+      var o = ol.getBoundingClientRect().top;
+      var c = nums.map(function (n) { var r = n.getBoundingClientRect(); return r.top - o + r.height / 2; });
+      var h = c[c.length - 1] - c[0];
+      ol.style.setProperty('--track-top', c[0] + 'px');
+      ol.style.setProperty('--track-h', h + 'px');
+      stops = c.map(function (y) { return h ? (y - c[0]) / h : 0; });
+    }
+    function render(v) {
+      p = Math.max(0, Math.min(1, v));
+      ol.style.setProperty('--p', p.toFixed(4));
+      steps.forEach(function (s, i) { s.classList.toggle('is-on', p > 0 && p >= stops[i] - 0.001); });
+    }
+    function animateTo(target, dur) {
+      cancelAnimationFrame(raf);
+      if (reduce) { render(target); return; }
+      var from = p, t0 = null;
+      var ease = function (t) { return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; };
+      (function tick(ts) {
+        if (t0 === null) t0 = ts;
+        var t = Math.min(1, (ts - t0) / dur);
+        render(from + (target - from) * ease(t));
+        if (t < 1) raf = requestAnimationFrame(tick);
+      })(performance.now());
+    }
+    function onScroll() {
+      var r = ol.getBoundingClientRect();
+      var first = stops.length ? r.top + parseFloat(ol.style.getPropertyValue('--track-top')) : r.top;
+      var h = parseFloat(ol.style.getPropertyValue('--track-h')) || 1;
+      render((window.innerHeight * 0.6 - first) / h);
+    }
+
+    measure();
+    window.addEventListener('resize', function () { measure(); if (!fine) onScroll(); else render(p); });
+    if (fine) {
+      ol.addEventListener('mouseenter', function () { animateTo(1, 1600 * (1 - p) || 1); });
+      ol.addEventListener('mouseleave', function () { animateTo(0, 700); });
+    } else {
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    }
+  })();
+  /* Transições de entrada: aparecem ao entrar na tela, em cascata quando chegam juntos */
+  (function () {
+    if (!('IntersectionObserver' in window)) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var root = document.querySelector('.jm-lp');
+    var sel = [
+      '.jm-cond .jm-head', '.jm-info--cond',
+      '.jm-imuno > .jm-eyebrow', '.jm-imuno > .jm-h2', '.jm-imuno__item',
+      '.jm-about__photo', '.jm-about__content > .jm-eyebrow', '.jm-about__content > .jm-h2',
+      '.jm-about__list li', '.jm-about__content > .jm-actions',
+      'section[aria-labelledby="jm-como"] .jm-head', '.jm-steps',
+      '.jm-local__content', '.jm-local__map', '.jm-quote--dark'
+    ].join(',');
+    var els = [].slice.call(document.querySelectorAll(sel));
+    if (!root || !els.length) return;
+    els.forEach(function (el) { el.classList.add('jm-reveal'); });
+    root.classList.add('jm-reveal-on');
+    var io = new IntersectionObserver(function (entries) {
+      var shown = entries.filter(function (e) { return e.isIntersecting; })
+        .sort(function (a, b) { return a.target.compareDocumentPosition(b.target) & 4 ? -1 : 1; });
+      shown.forEach(function (e, i) {
+        e.target.style.setProperty('--d', Math.min(i, 5) * 90 + 'ms');
+        e.target.classList.add('is-in');
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    els.forEach(function (el) { io.observe(el); });
+  })();
+</script>
+</body>
+</html>
